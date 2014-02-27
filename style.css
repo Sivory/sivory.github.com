@@ -1,0 +1,50 @@
+@-webkit-keyframes rotate {
+	from {
+		-webkit-transform:rotate3d(0,0,1,0deg);
+	}
+	to {
+		-webkit-transform:rotate3d(0,0,1,360deg);	
+	}
+}
+
+body
+{
+	margin:0;
+	padding:0;
+}
+
+.loading-back
+{
+	width:100%;
+	height:100%;
+	background: #fff;
+	position:fixed;
+	left:0;
+	top:0;
+}
+
+.loading
+{
+	width:128px;
+	height:128px;
+	background-image: -moz-linear-gradient(top, #5ccedc, #ea48d5); /* Firefox */
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #5ccedc), color-stop(1, #ea48d5)); /* Saf4+, Chrome */
+	position: fixed;
+	left:50%;
+	top:50%;
+	margin-left:-64px;
+	margin-top:-64px;
+	border-radius: 64px;
+	-webkit-animation:rotate 1s linear infinite;
+}
+
+.loading-inner
+{
+	width:132px;
+	height:132px;
+	position: fixed;
+	left:50%;
+	top:50%;
+	margin-left:-66px;
+	margin-top:-66px;
+}
