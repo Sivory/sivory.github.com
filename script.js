@@ -476,30 +476,32 @@ var UI_Content_Last = function() {
 		}, 7200);
 	};
 	lContent.endSomething = function() {
+		var element = $(this);
+		initFixUp(element);
 		link1.css({
 			transition: '',
-			visibility: '',
-			opacity: ''
+			visibility: 'hidden',
+			opacity: 0
 		})
 		link2.css({
 			transition: '',
-			visibility: '',
-			opacity: ''
+			visibility: 'hidden',
+			opacity: 0
 		})
 		link3.css({
 			transition: '',
-			visibility: '',
-			opacity: ''
+			visibility: 'hidden',
+			opacity: 0
 		})
 		link4.css({
 			transition: '',
-			visibility: '',
-			opacity: ''
+			visibility: 'hidden',
+			opacity: 0
 		})
 		link5.css({
 			transition: '',
-			visibility: '',
-			opacity: ''
+			visibility: 'hidden',
+			opacity: 0
 		})
 	}
 	return lContent;
@@ -515,7 +517,7 @@ var initFixUp = function(element) {
 			var x = Math.floor(Math.random() * 20) - 10;
 			var y = Math.floor(Math.random() * 20) - 10;
 			spanTemp.css({
-				display:'inline-block',
+				display: 'inline-block',
 				transform: 'translate(' + x + 'px,' + y + 'px)',
 				opacity: 0,
 				visibility: 'hidden'
@@ -686,7 +688,6 @@ $(function() {
 	});
 })
 
-$(window).bind('wheel', function(e,f) {
-	console.log(e,f);
+$(window).bind('wheel', function(e, f) {
 	e.preventDefault();
 })
