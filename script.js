@@ -152,7 +152,7 @@ UI_Resource.instance = new UI_Resource([{
 
 var UI_Footer = function() {
 	var footer = $('<div>').addClass('footer');
-	footer.html('<span><i class="fa fa-envelope"></i> <a href="mailto:sivory@qq.com">sivory@qq.com</a></span>');
+	footer.html('<span><i class="fa fa-envelope"></i> <a href="mailto:sivory@qq.com">sivory@qq.com</a> <i style="margin:0 15px;">|</i> <i class="fa fa-phone"></i> <a href="tel:15711588512">15711588512</a> </span>');
 	return footer;
 }
 
