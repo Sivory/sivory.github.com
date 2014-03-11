@@ -127,12 +127,12 @@ body {
 }
 
 a,a:visited {
-	color:#eee;
+	color:#ffe7cd;
 	text-decoration: none;
 }
 
 a:hover {
-	color:#fff;
+	color:#ff8809;
 }
 
 .loading-back {

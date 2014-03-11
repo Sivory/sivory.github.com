@@ -152,7 +152,7 @@ UI_Resource.instance = new UI_Resource([{
 
 var UI_Footer = function() {
 	var footer = $('<div>').addClass('footer');
-	footer.html('<span><i class="fa fa-envelope"></i> <a href="mailto:sivory@qq.com">sivory@qq.com</a> <i style="margin:0 15px;">|</i> <i class="fa fa-phone"></i> <a href="tel:15711588512">15711588512</a> </span>');
+	footer.html('<span><i class="fa fa-envelope"></i> <a href="mailto:sivory@qq.com">sivory@qq.com</a> <i style="margin:0 15px;">|</i> <i class="fa fa-phone"></i> <a href="tel:15711588512">15711588512</a> <i style="margin:0 15px;">|</i> <a id="full-screen-cheacker">Would you please press the F11 key :-)</a> </span>');
 	return footer;
 }
 
@@ -180,7 +180,7 @@ var UI_Content = function() {
 				transform: 'rotate(' + e + 'deg)',
 				'transform-origin': '50% 150%'
 			});
-		}, 0);
+		}, 20);
 		setTimeout(function() {
 			if (isShow)
 				_ins.addClass('shown');
@@ -220,7 +220,7 @@ var UI_Content_Profile = function() {
 	var profileLineProfession = $('<div>').addClass('profile-line').html('<span class="bold">专业：</span><span class="fix-up">软件工程</span>').appendTo(profileContent);
 	var profileLineSchool = $('<div>').addClass('profile-line').html('<span class="bold">毕业院校：</span><span class="fix-up">厦门大学</span>').appendTo(profileContent);
 	var profileLineBirthday = $('<div>').addClass('profile-line').html('<span class="bold">出生日期：</span><span class="fix-up">1990年12月23日</span>').appendTo(profileContent);
-	var profileLineExpect = $('<div>').addClass('profile-line').html('<span class="bold">期望职业：</span><span class="fix-up">前端工程师</span>').appendTo(profileContent);
+	var profileLineExpect = $('<div>').addClass('profile-line').html('<span class="bold">期望职业：</span><span class="fix-up">前端工程师 / 游戏架构师</span>').appendTo(profileContent);
 	fContent.doSomething = function() {
 		initFixUp(fContent);
 		setTimeout(function() {
@@ -339,8 +339,8 @@ var UI_Content_Works = function(name, video, description) {
 	wContent.doSomething = function() {
 		var _ins = this;
 		var videoUrl = $(_ins).find('.video').data('video');
-		var iframe = $('<iframe height=440 width=640 src="http://player.youku.com/embed/' + videoUrl + '" frameborder=0></iframe>');
 		setTimeout(function() {
+			var iframe = $('<object height="440" width="640" type="application/x-shockwave-flash" data="http://player.youku.com/player.php/sid/' + videoUrl + '/v.swf"><param name=”src” value=”http://player.youku.com/player.php/sid/' + videoUrl + '/v.swf” /></object>');
 			$(_ins).find('.video').append(iframe);
 		}, 1000);
 	}
@@ -392,7 +392,7 @@ var UI_Content_Last = function() {
 	var words2 = $('<div>').addClass('fix-up').css({
 		'font-size': 36
 	}).text('总之不仅仅是做网页的。').appendTo(wordsContent);
-	var link1 = $('<a href="https://github.com/Sivory/pal.js"><i class="fa fa-mail-forward"></i> 访问Sivory的《仙剑奇侠传》HTML5重制项目（开源）</a>').css({
+	var link1 = $('<a href="https://github.com/Sivory/pal.js" target="_blank"><i class="fa fa-mail-forward"></i> 访问Sivory的《仙剑奇侠传》HTML5重制项目（开源）</a>').css({
 		visibility: 'hidden',
 		opacity: 0,
 		position: 'absolute',
@@ -400,7 +400,7 @@ var UI_Content_Last = function() {
 		top: 140,
 		'text-shadow': '0 0 10px rgba(0,0,0,.2)'
 	}).appendTo(wordsContent);
-	var link2 = $('<a href="http://zibianliang.com/"><i class="fa fa-mail-forward"></i> 访问Sivory的创业博客《自变量》</a>').css({
+	var link2 = $('<a href="http://zibianliang.com/" target="_blank"><i class="fa fa-mail-forward"></i> 访问Sivory的创业博客《自变量》</a>').css({
 		visibility: 'hidden',
 		opacity: 0,
 		position: 'absolute',
@@ -408,7 +408,7 @@ var UI_Content_Last = function() {
 		top: 170,
 		'text-shadow': '0 0 10px rgba(0,0,0,.2)'
 	}).appendTo(wordsContent);
-	var link3 = $('<a href="http://v.youku.com/v_show/id_XMjMyMDE1MzI4.html"><i class="fa fa-mail-forward"></i> 访问Sivory的UDK作品《天界》</a>').css({
+	var link3 = $('<a href="http://v.youku.com/v_show/id_XMjMyMDE1MzI4.html" target="_blank"><i class="fa fa-mail-forward"></i> 访问Sivory的UDK作品《天界》</a>').css({
 		visibility: 'hidden',
 		opacity: 0,
 		position: 'absolute',
@@ -416,7 +416,7 @@ var UI_Content_Last = function() {
 		top: 200,
 		'text-shadow': '0 0 10px rgba(0,0,0,.2)'
 	}).appendTo(wordsContent);
-	var link4 = $('<a href="http://www.huochejiayuan.com.cn/"><i class="fa fa-mail-forward"></i> 访问Sivory曾参与的创业项目《货车家园网》</a>').css({
+	var link4 = $('<a href="http://www.huochejiayuan.com.cn/" target="_blank"><i class="fa fa-mail-forward"></i> 访问Sivory曾参与的创业项目《货车家园网》</a>').css({
 		visibility: 'hidden',
 		opacity: 0,
 		position: 'absolute',
@@ -424,7 +424,7 @@ var UI_Content_Last = function() {
 		top: 230,
 		'text-shadow': '0 0 10px rgba(0,0,0,.2)'
 	}).appendTo(wordsContent);
-	var link5 = $('<a href="https://github.com/Sivory/sivory.github.com"><i class="fa fa-mail-forward"></i> 访问本站点源代码</a>').css({
+	var link5 = $('<a href="https://github.com/Sivory/sivory.github.com" target="_blank"><i class="fa fa-mail-forward"></i> 访问本站点源代码</a>').css({
 		visibility: 'hidden',
 		opacity: 0,
 		position: 'absolute',
@@ -441,35 +441,35 @@ var UI_Content_Last = function() {
 		}, 1000);
 		setTimeout(function() {
 			link1.css({
-				transition: 'all 1s',
+				transition: 'all .3s',
 				visibility: 'visible',
 				opacity: 1
 			})
 		}, 6000);
 		setTimeout(function() {
 			link2.css({
-				transition: 'all 1s',
+				transition: 'all .3s',
 				visibility: 'visible',
 				opacity: 1
 			})
 		}, 6300);
 		setTimeout(function() {
 			link3.css({
-				transition: 'all 1s',
+				transition: 'all .3s',
 				visibility: 'visible',
 				opacity: 1
 			})
 		}, 6600);
 		setTimeout(function() {
 			link4.css({
-				transition: 'all 1s',
+				transition: 'all .3s',
 				visibility: 'visible',
 				opacity: 1
 			})
 		}, 6900);
 		setTimeout(function() {
 			link5.css({
-				transition: 'all 1s',
+				transition: 'all .3s',
 				visibility: 'visible',
 				opacity: 1
 			})
@@ -646,16 +646,16 @@ $(function() {
 			var contentHoner = new UI_Content_Honer();
 			var contentWorks1 = new UI_Content_Works('MovingCastle 游戏引擎',
 				'XNTI5NTEzNjAw',
-				'<span>作品简介:</span> 基于HTML5技术开发的在线RPG游戏引擎。采用javascript语言编写。可实现在线资源管理、在线开发、在线调试、在线试玩。');
+				'<span>作品简介:</span> 基于HTML5技术开发的在线RPG游戏引擎。采用javascript语言编写。可实现在线资源管理、在线开发、在线调试、在线试玩。<a href="http://112.124.96.115/" target="_blank">传送门</a>');
 			var contentWorks2 = new UI_Content_Works('MovingCastle 游戏展示',
 				'XNTI5NTEyNDA0',
-				'<span>作品简介:</span> 利用MovingCastle开发的在线RPG游戏展示。');
+				'<span>作品简介:</span> 利用MovingCastle开发的在线RPG游戏展示。<a href="http://112.124.96.115/Game/FB73D086912082BD754492C727C30340" target="_blank">传送门</a>');
 			var contentWorks3 = new UI_Content_Works('酷零浏览器',
 				'XMjM3MTA4MTcy',
 				'<span>作品简介:</span> 基于C#开发的一款浏览器。采用Webkit内核与WPF技术实现。');
 			var contentWorks4 = new UI_Content_Works('酷零音乐播放器',
 				'XNDQxMDc3OTY0',
-				'<span>作品简介:</span> 基于C语言开发的一款播放器。采用Windows API与DirectShow技术实现。');
+				'<span>作品简介:</span> 基于C语言开发的一款播放器。采用Windows API与DirectShow技术实现。(我还有小小露脸哦~)');
 			var contentWorks5 = new UI_Content_Works_Mobile('集美旅游微官网', UI_Resource.instance.resourceList[9].url,
 				'<span>作品简介:</span> 为集美旅游局定制的集美旅游微官网，接入微信平台提供服务。主要采用CSS3.0技术实现。');
 			var contentLast = new UI_Content_Last();
@@ -691,3 +691,11 @@ $(function() {
 $(window).bind('wheel', function(e, f) {
 	e.preventDefault();
 })
+
+window.addEventListener('resize', function(e) {
+	if (window.innerWidth == window.screen.width && window.innerHeight == window.screen.height || window.innerHeight == window.screen.height - 1) {
+		$('#full-screen-cheacker').text('Thank you! :-D');
+	} else {
+		$('#full-screen-cheacker').text('Would you please press the F11 key :-)');
+	}
+});
