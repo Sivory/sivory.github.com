@@ -1,0 +1,103 @@
+@font-face {
+	font-family: Pantheon;
+	src: url(../../../font/Pantheon.ttf);
+}
+
+@keyframes rotate {
+	from{transform:rotate(0deg);}
+	to{transform:rotate(360deg);}
+}
+@-webkit-keyframes rotate {
+	from{-webkit-transform:rotate(0deg);}
+	to{-webkit-transform:rotate(360deg);}
+}
+@keyframes rotate2 {
+	from{transform:rotate(360deg);}
+	to{transform:rotate(0deg);}
+}
+@-webkit-keyframes rotate2 {
+	from{-webkit-transform:rotate(360deg);}
+	to{-webkit-transform:rotate(0deg);}
+}
+
+body,html {
+	height:100%;
+	margin:0;
+	overflow: hidden;
+}
+
+.background {
+	position:absolute;
+	height:100%;
+	width:100%;
+	top:0;
+	left:0;
+	background: url(../img/back2.jpg) no-repeat center;
+	background-size: cover;
+}
+
+.frontground {
+	position:absolute;
+	width:160px;
+	height:160px;
+	border-radius: 160px;
+	left:0;
+	top:0;
+	background: url(../img/back.jpg) no-repeat center;
+	background-size: cover;
+	background-attachment: fixed;
+	cursor: none;
+}
+
+.circle-1 {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	border-left:10px solid rgba(0,0,0,.2);
+	border-right:10px solid rgba(0,0,0,.2);
+	border-top:10px solid rgba(0,0,0,0);
+	border-bottom:10px solid rgba(0,0,0,0);
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	border-radius: 160px;
+	animation:rotate 2s linear infinite;
+	-webkit-animation:rotate 2s linear infinite;
+}
+
+.circle-2 {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	border-left:20px solid rgba(0,0,0,.5);
+	border-right:20px solid rgba(0,0,0,.5);
+	border-top:20px solid rgba(0,0,0,0);
+	border-bottom:20px solid rgba(0,0,0,0);
+	width:140%;
+	height:140%;
+	position:absolute;
+	left:-20%;
+	top:-20%;
+	border-radius: 160px;
+	animation:rotate2 3s linear infinite;
+	-webkit-animation:rotate2 3s linear infinite;
+}
+.circle-3 {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	border-left:30px solid rgba(0,0,0,.3);
+	border-right:30px solid rgba(0,0,0,0);
+	border-top:30px solid rgba(0,0,0,0);
+	border-bottom:30px solid rgba(0,0,0,0);
+	width:200%;
+	height:200%;
+	position:absolute;
+	left:-50%;
+	top:-50%;
+	border-radius: 160px;
+	animation:rotate 5s linear infinite;
+	-webkit-animation:rotate 5s linear infinite;
+}

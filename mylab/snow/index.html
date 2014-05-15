@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Snow | Sivory's Lab</title>
+	<script type="text/javascript" src="../../js/jquery-2.1.0.min.js"></script>
+	<style type="text/css">
+
+		@font-face {
+			font-family: Pantheon;
+			src: url(../../../font/Pantheon.ttf);
+		}
+
+		body,html {
+			margin:0;
+			overflow: hidden;
+		}
+		.background {
+			position:fixed;
+			background-image: url(./back.jpg);
+			left:0;
+			top:0;
+			width:100%;
+			height:100%;
+			background-size: cover;
+			background-position: center bottom;
+			opacity: 0.1;
+		}
+		.frontground {
+			position: absolute;
+			background-image: url(./back.jpg);
+			background-size: cover;
+			width:663px;
+			height:540px;
+			max-height: 100%;
+			left:50%;
+			top:50%;
+			margin-left:-462px;
+			margin-top:-270px;
+		}
+		.density-panel {
+			position: absolute;
+			left:100%;
+			padding:10px;
+			background:rgba(0,0,0,.2);
+			height:100%;
+			box-sizing:border-box;
+			-moz-box-sizing:border-box;
+			font-family: Verdana;
+			font-size:14px;
+			text-shadow: 1px 1px 0 #ddd;
+			width:250px;
+		}
+		.density-panel input[type=range] {
+			width:80%;
+		}
+	</style>
+</head>
+<body>
+	<div class="background"></div>
+	<div class="frontground">
+		<div class="density-panel">
+			<h1>SNOW</h1><br/>
+			<input type="range" class="param-input" data-bind="SNOW_DENSITY" min="0" max="1" step="0.1" value="0.3"/>
+			<p>Snow Density:<span class="param-value" data-bind="SNOW_DENSITY">0.3</span></p><br/>
+			<input type="range" class="param-input" data-bind="WIND_STRENGTH" min="0" max="1000" step="100" value="300"/>
+			<p>Wind Strength:<span class="param-value" data-bind="WIND_STRENGTH">300</span></p><br/>
+			<input type="range" class="param-input" data-bind="WIND_DISTURBANCE" min="0" max="1000" step="100" value="200"/>
+			<p>Wind Disturbance:<span class="param-value" data-bind="WIND_DISTURBANCE">200</span></p><br/>
+			<p>
+				Freeze:<input class="switcher" type="checkbox" data-bind="PAUSE_SWITCHER">
+				<span style="width:10px;display:inline-block;"></span>
+				Show Force:<input class="switcher" type="checkbox" data-bind="SHOW_FORCE_SWITCHER">
+			</p><br/>
+			<p>Number of Snowflakes:<span class="param-watch" data-bind="NUMBER_OF_SNOWFLAKES">0</span></p><br/>
+			<p>FPS:<span class="param-watch" data-bind="FRAMES_PER_SECOUND">0</span></p><br/>
+			<script type="text/javascript">
+				$('.param-input').change(function(){
+					var value = $(this).val();
+					var target = $(this).attr('data-bind');
+					$('.param-value[data-bind='+target+']').text(value);
+					window[target] = value;
+				});
+				$('.param-watch').each(function(){
+					var current = $(this);
+					setInterval(function(){
+						var target = current.attr('data-bind');
+						current.text(window[target]);
+					},1000);
+				});
+				$('.switcher').change(function(){
+					var value = this.checked;
+					var target = $(this).attr('data-bind');
+					window[target] = value;
+				});
+			</script>
+		</div>
+		<canvas id="canvas" width=663 height=540></canvas>
+		<script type="text/javascript">
+
+			var SNOW_DENSITY = 0.3;
+			var WIND_STRENGTH = 300;
+			var WIND_DISTURBANCE = 200;
+			var NUMBER_OF_SNOWFLAKES = 0;
+			var FRAMES_PER_SECOUND = 0;
+			window.__defineSetter__('PAUSE_SWITCHER',function(value){
+				if (!value) resume();
+				else pause();
+			});
+			var SHOW_FORCE_SWITCHER = false;
+
+			//实现暂停机制
+			var WAITING_TIME = 0;
+			var PAUSE_FLAG = false;
+			var WAITING_START_TIME = 0;
+			function getRelativeTime() {
+				var absoluteTime = Date.now();
+				if (!!PAUSE_FLAG) {
+					WAITING_TIME += absoluteTime - WAITING_START_TIME;
+					WAITING_START_TIME = absoluteTime;
+				}
+				return absoluteTime-WAITING_TIME;
+			}
+			function pause() {
+				PAUSE_FLAG = true;
+				WAITING_START_TIME = Date.now();
+			}
+			function resume() {
+				PAUSE_FLAG = false;
+			}
+
+			function _requestAnimationFrame(callback){
+				if (!!window.requestAnimationFrame) window.requestAnimationFrame(callback);
+				else if (!!window.webkitRequestAnimationFrame) window.webkitRequestAnimationFrame(callback);
+				else if (!!window.mozRequestAnimationFrame) window.mozRequestAnimationFrame(callback);
+				else if (!!window.msRequestAnimationFrame) window.msRequestAnimationFrame(callback);
+				else setTimeout(callback,20);
+			}
+
+			function vp(v1,v2) {
+				return [v1[0]+v2[0],v1[1]+v2[1],v1[2]+v2[2]];
+			}
+
+			function vc(v,h) {
+				return [Math.floor(v[0]*h),Math.floor(v[1]*h),Math.floor(v[2]*h)];
+			}
+
+			function Wind(position,force) {
+				this.position = position;
+				this.force = force;
+			}
+
+			Wind.prototype.effect = function(dust,time,debug) {
+				var temp = dust.velocity[1];
+				var acceleration = vc(this.force, 1 / dust.mass);
+				var velocity1 = vc(acceleration,time/10);
+				var velocity2 = vp(velocity1,dust.velocity);
+				dust.velocity = velocity2;
+				if (debug) console.log(temp,acceleration[1],velocity1[1],velocity2[1],dust.velocity[1]);
+			}
+
+			function Dust(mass,position,velocity,color) {
+				this.mass = mass;
+				this.position = position;
+				this.velocity = velocity;
+				this.color = color;
+			}
+
+			Dust.prototype.domove = function(time) {
+				var offset = vc(this.velocity,time);
+				this.position = vp(offset,this.position);
+			};
+
+			var drawArrows = function(canvas,winds) {
+				var context = canvas.getContext('2d');
+				for (var i=0;i<winds.length;i++) {
+					var angle = Math.atan2(winds[i].force[1],winds[i].force[0]);
+					var length = Math.sqrt(winds[i].force[0]*winds[i].force[0]+winds[i].force[1]*winds[i].force[1]);
+					context.save();
+					context.translate(canvas.width/2,canvas.height/2);
+					context.rotate(angle);
+					context.moveTo(0,0);
+					context.lineTo(length,0);
+					context.moveTo(length-30,10);
+					context.lineTo(length,0);
+					context.lineTo(length-30,-10);
+					context.strokeStyle = "rgba(0,0,0,.5)";
+					context.lineWidth = 4;
+					context.stroke();
+					context.restore();
+				}
+			};
+
+			(function animationStart(){
+				var canvas = document.getElementById('canvas');
+				var counter = document.getElementById('number');
+				var context = canvas.getContext('2d');
+				var dusts = [];
+				var winds = [
+					new Wind([0,0,0],[300,0,0])
+				];
+				var lastTickRelativeTime = getRelativeTime();
+				var startTime = lastTickRelativeTime;
+				var framesinlastsecound = 0;
+				var lastsesoundstarttime = 0;
+				(function animationTick(){
+					framesinlastsecound++;
+					canvas.width = canvas.width;
+					var currentTickAbsoluteTime = Date.now();
+					var currentTickRelativeTime = getRelativeTime();
+					if (currentTickAbsoluteTime-lastsesoundstarttime>1000) {
+						FRAMES_PER_SECOUND = framesinlastsecound-1;
+						framesinlastsecound = 0;
+						lastsesoundstarttime = currentTickAbsoluteTime;
+					}
+					var delayTime = currentTickRelativeTime - lastTickRelativeTime;
+					lastTickRelativeTime = currentTickRelativeTime;
+					winds[0].force[1] = Math.floor(WIND_DISTURBANCE * Math.sin(currentTickRelativeTime/1000));
+					winds[0].force[0] = WIND_STRENGTH;
+					for (var i=0;i<100;i++) if (Math.random()<SNOW_DENSITY && !PAUSE_FLAG){
+						var dustmass = Math.floor(10 + Math.random()*10);
+						var dustpos = [-300000,Math.floor(Math.random()*canvas.height*2-canvas.height/2)*10000,0];
+						var dustvel = [600+Math.floor(Math.random()*600),300-Math.floor(Math.random()*600),0];
+						var dustcolor = [225,255,255,Math.floor(255-Math.random()*128)];
+						var dust = new Dust(dustmass,dustpos,dustvel,dustcolor);
+						dusts.push(dust);
+					}
+					(function processDust(){
+						for (var i=0;i<dusts.length;i++) {
+							for (var j=0;j<winds.length;j++) {
+								winds[j].effect(dusts[i],delayTime);
+							}
+							dusts[i].domove(delayTime);
+						}
+						var imagedata = context.createImageData(canvas.width,canvas.height);
+						for (var i=0;i<dusts.length;i++) {
+							var size = 0;
+							if (dusts[i].mass>15) size = 1;
+							for (var ii=0;ii<=size;ii++)
+								for (var jj=0;jj<=size;jj++) {
+									var offset_i = Math.floor(dusts[i].position[1]/10000)+ii;
+									var offset_j = Math.floor(dusts[i].position[0]/10000)+jj;
+									if (offset_i<0 || offset_i>canvas.height || offset_j<0 || offset_j>canvas.width) continue;
+									var offset = (offset_i*canvas.width+offset_j)*4;
+									imagedata.data[offset]=dusts[i].color[0];
+									imagedata.data[offset+1]=dusts[i].color[1];
+									imagedata.data[offset+2]=dusts[i].color[2];
+									imagedata.data[offset+3]=dusts[i].color[3];	
+								}
+						}
+						context.putImageData(imagedata,0,0);
+						if (!!SHOW_FORCE_SWITCHER)
+							drawArrows(canvas,winds);
+					})();
+					var index = 0;
+					while (index<dusts.length) {
+						if (dusts[index].position[0]<-300000 || dusts[index].position[0]>canvas.width*10000)
+							dusts.splice(index,1);
+						else index++;
+					}
+					window.NUMBER_OF_SNOWFLAKES = dusts.length;
+					_requestAnimationFrame(animationTick);
+				})();
+			})();
+
+
+		</script>
+	</div>
+	<div class="copyright" style="position:absolute;bottom:0px;width:100%;text-align:center;background:rgba(0,0,0,.5);color:#fff;line-height:40px;height:40px;font-size:30px;font-family: Pantheon;">Sivory's Laboratory</div>
+</body>
+</html>

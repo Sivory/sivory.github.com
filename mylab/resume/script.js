@@ -108,11 +108,11 @@ var UI_Resource = function(resList) {
 
 UI_Resource.instance = new UI_Resource([{
 	url: './back.jpg',
-	size: 316045,
+	size: 424130,
 	mime: 'image/jpeg'
 }, {
 	url: './front.jpg',
-	size: 79069,
+	size: 82729,
 	mime: 'image/jpeg'
 }, {
 	url: './logo.jpg',
@@ -627,7 +627,7 @@ $(function() {
 				'transition': 'all 1s',
 				opacity: 1
 			});
-		}, 0);
+		}, 100);
 		setTimeout(function() {
 			UI_Footer.instance.css({
 				'transition': 'all .5s',
@@ -684,7 +684,7 @@ $(function() {
 				'transition': 'all 2s',
 				opacity: 1
 			});
-		}, 0);
+		}, 100);
 	});
 })
 

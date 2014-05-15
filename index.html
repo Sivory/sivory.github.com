@@ -1,13 +1,35 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Resume | Sivory</title>
-	<script type="text/javascript" src="jquery.js"></script>
-	<script type="text/javascript" src="script.js"></script>
-	<link rel="stylesheet" type="text/css" href="style.css"></head>
-	<link rel="stylesheet" type="text/css" href="./plugin/FAF/css/font-awesome.min.css">
-<body></body>
+	<title>Sivory's Labratory</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<script type="text/javascript" src="./js/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="./js/script.js"></script>
+</head>
+<body>
+	<div class="background">
+		<div class="shadow-back"></div>
+		<div class="icon-back">
+			<div class="random-font">S</div>
+			<script type="text/javascript">
+				$('.random-font').mouseenter(function(){
+					var fontlist = ['CAI978','AIRLOCK','AlphaRomanieG98','Achafexp','adelon-serial-regulardb','lemon','Expansiva'];
+					var fontindex = Math.floor(Math.random()*fontlist.length);
+					$(this).css('font-family',fontlist[fontindex]);
+				});
+			</script>
+		</div>
+	</div>
+	<div class="frontground">
+		<div class="speech">
+			Hi, I'm Sivory. And this is my laboratory. If you're interested in the following experiments, just please don't forget one thing...
+			<br/> <strong>Use the source, Luke</strong> <strong class="no-font">;-)</strong>
+		</div>
+		<div class="exp-list"></div>
+	</div>
+</body>
 </html>
-<!-- 适配Chrome浏览器 -->
-<!-- Firefox浏览器中不能播放视频 原因排查中 -->
+
+<!-- Contact me -->
+<!-- sivory@qq.com -->
+<!-- sivory21@gmail.com -->
