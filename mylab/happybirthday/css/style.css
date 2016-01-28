@@ -20,12 +20,12 @@ body {
     height: 100px;
     background: #fff url(../avatar.jpg) no-repeat center;
     background-size: cover;
-    margin: 10px auto;
+    margin: 30px auto;
     border-radius: 14px;
     box-shadow: 0 0 22px rgba(0,0,0,.3);
-    border: 2px solid #eee;
-    -webkit-animation: showup 1500ms 1s ease-out forwards;
-    animation: showup 1500ms 1s ease-out forwards;
+    border: 4px solid #eee;
+    -webkit-animation: showup 2000ms 8s ease-out forwards;
+    animation: showup 2000ms 8s ease-out forwards;
     opacity: 0;
 }
 
@@ -170,6 +170,9 @@ body {
   font-weight: 300;
   font-style: italic;
   text-align: center;
+  -webkit-animation: showup 1000ms 7s ease-out forwards;
+  animation: showup 1000ms 7s ease-out forwards;
+  opacity: 0;
 }
 .text h1 {
   font-size: 1.4em;
