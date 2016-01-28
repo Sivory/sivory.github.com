@@ -15,6 +15,20 @@ body {
   margin: -10em auto 0 auto;
 }
 
+.avatar {
+    width: 100px;
+    height: 100px;
+    background: #fff url(../avatar.jpg) no-repeat center;
+    background-size: cover;
+    margin: 10px auto;
+    border-radius: 14px;
+    box-shadow: 0 0 22px rgba(0,0,0,.3);
+    border: 2px solid #eee;
+    -webkit-animation: showup 1500ms 1s ease-out forwards;
+    animation: showup 1500ms 1s ease-out forwards;
+    opacity: 0;
+}
+
 /* ============================================== Candle
 */
 .velas {
@@ -139,6 +153,15 @@ body {
   to {
     -webkit-transform: translateY(0);
     transform: translateY(0);
+  }
+}
+@keyframes showup {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 .text {
