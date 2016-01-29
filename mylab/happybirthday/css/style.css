@@ -45,6 +45,8 @@ body {
     margin-left: -130px;
     text-align: center;
     font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-style: italic;
     transform: translate(0px, 0);
     -webkit-transform: translate(0px, 0);
     transition: transform .3s;
