@@ -49,6 +49,9 @@ body {
     -webkit-transform: translate(0px, 0);
     transition: transform .3s;
     -webkit-transition: transform .3s;
+    -webkit-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .word-sample.bigger {
