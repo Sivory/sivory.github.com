@@ -65,7 +65,7 @@ function loadBgm(callback) {
 	setTimeout(function() {
 		audioPlayer.pause();
 		audioPlayer.autoplay = false;
-	}, 100);
+	}, 300);
 	audioPlayer.addEventListener('progress', function() {
 		if (audioPlayer.buffered.length > 0) {
 			targetProgress = audioPlayer.buffered.end(0) / audioPlayer.duration;
