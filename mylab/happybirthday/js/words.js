@@ -25,6 +25,9 @@ $(function(){
 				setTimeout(function(){
 					currentWordText.addClass('bigger');
 				}, 1000);
+				setTimeout(function(){
+					currentWordText.removeClass('bigger');
+				}, 1300);
 			}
 			$('body').prepend(currentWordText);
 			setTimeout(function(){
@@ -46,8 +49,6 @@ $(function(){
 				word: e[4]
 			};
 			wordsList[i] = line;
-			console.log(wordsList[i]);
 		}
-		console.log(wordsList);
 	});
 });

@@ -1,4 +1,10 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300italic);
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Lato Light Italic'), local('Lato-LightItalic'), url(../font/2HG_tEPiQ4Z6795cGfdivLO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+
 html,
 body {
   width: 100%;
@@ -46,8 +52,8 @@ body {
 }
 
 .word-sample.bigger {
-    -webkit-animation: bigger 0.5s 0s ease-out forwards;
-    animation: bigger 0.5s 0s ease-out forwards;
+    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
 }
 
 .word-sample.right {
@@ -202,26 +208,6 @@ body {
 
   to {
     opacity: 1;
-  }
-}
-@-webkit-keyframes bigger {
-  0%, 100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-  50% {
-    -webkit-transform: scale(2);
-    transform: scale(2);
-  }
-}
-@keyframes bigger {
-  0% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-  50% {
-    -webkit-transform: scale(2);
-    transform: scale(2);
   }
 }
 .text {
