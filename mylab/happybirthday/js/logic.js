@@ -46,7 +46,7 @@ function startDisplayPics() {
 		}
 		var avatarInner = $('<div class="avatar-inner">');
 		$('.avatar').prepend(avatarInner);
-		avatarInner.css('background-image', 'url(./pics/'+index+'.jpg)');
+		avatarInner.css('background-image', 'url(./pics/'+index+'.JPG)');
 		setTimeout(function() {
 			avatarInner.addClass('bigger');
 		}, 100);
