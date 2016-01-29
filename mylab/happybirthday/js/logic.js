@@ -16,7 +16,7 @@ $(function() {
 			}, 5000);
 			setTimeout(function() {
 				startDisplayPics();
-			}, 1000)
+			}, 1500)
 			startDisplayWords();
 		});
 	});
@@ -112,7 +112,7 @@ function startDisplayWords() {
 				lastWordText.remove();
 			}
 			lastWordText = currentWordText;
-			currentWordText = $('<div class="word-sample right">').text(wordsList[currentIndex].word);
+			currentWordText = $('<div class="word-sample right">').html(wordsList[currentIndex].word);
 			if (currentIndex == 5) {
 				setTimeout(function() {
 					currentWordText.addClass('bigger');
