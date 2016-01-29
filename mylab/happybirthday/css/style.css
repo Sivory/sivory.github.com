@@ -38,7 +38,7 @@ body {
     top: 90px;
     margin-left: -130px;
     text-align: center;
-    font-family: '华文细黑', sans-serif;
+    font-family: 'Lato', sans-serif;
     transform: translate(0px, 0);
     -webkit-transform: translate(0px, 0);
     transition: transform .3s;
@@ -46,8 +46,8 @@ body {
 }
 
 .word-sample strong {
-    -webkit-animation: important 500ms 1s ease-out forwards;
-    animation: important 500ms 1s ease-out forwards;
+    -webkit-animation: important 0.5s 1s ease-out forwards;
+    animation: important 0.5s 1s ease-out forwards;
 }
 
 .word-sample.right {
