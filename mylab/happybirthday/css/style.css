@@ -38,6 +38,7 @@ body {
     top: 90px;
     margin-left: -130px;
     text-align: center;
+    font-family: '华文细黑', sans-serif;
     transform: translate(0px, 0);
     -webkit-transform: translate(0px, 0);
     transition: transform .3s;
@@ -185,15 +186,6 @@ body {
     transform: translateY(0);
   }
 }
-@keyframes showup {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
 @-webkit-keyframes showup {
   from {
     opacity: 0;
@@ -203,25 +195,40 @@ body {
     opacity: 1;
   }
 }
-@keyframes important {
+@keyframes showup {
   from {
-    transform: scale(1, 1);
+    opacity: 0;
   }
-  50% {
-    transform: scale(2, 2);
-  }
+
   to {
-    transform: scale(1, 1);
+    opacity: 1;
   }
 }
 @-webkit-keyframes important {
   from {
+    transform: scale(1, 1);
     -webkit-transform: scale(1, 1);
   }
   50% {
+    transform: scale(2, 2);
     -webkit-transform: scale(2, 2);
   }
   to {
+    transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+  }
+}
+@keyframes important {
+  from {
+    transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(2, 2);
+    -webkit-transform: scale(2, 2);
+  }
+  to {
+    transform: scale(1, 1);
     -webkit-transform: scale(1, 1);
   }
 }
