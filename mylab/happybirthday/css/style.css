@@ -45,9 +45,9 @@ body {
     -webkit-transition: transform .3s;
 }
 
-.word-sample strong {
-    -webkit-animation: bigger 0.5s 1s ease-out forwards;
-    animation: bigger 0.5s 1s ease-out forwards;
+.word-sample.bigger {
+    -webkit-animation: bigger 0.5s 0s ease-out forwards;
+    animation: bigger 0.5s 0s ease-out forwards;
 }
 
 .word-sample.right {

@@ -20,7 +20,12 @@ $(function(){
 				lastWordText.remove();
 			}
 			lastWordText = currentWordText;
-			currentWordText = $('<div class="word-sample right">').html(wordsList[currentIndex].word);
+			currentWordText = $('<div class="word-sample right">').text(wordsList[currentIndex].word);
+			if (currentIndex ==4) {
+				setTimeout(function(){
+					currentWordText.addClass('bigger');
+				}, 1000);
+			}
 			$('body').prepend(currentWordText);
 			setTimeout(function(){
 				currentWordText.removeClass('right');
