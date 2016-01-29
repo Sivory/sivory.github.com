@@ -65,8 +65,8 @@ function loadBgm(callback) {
 	setTimeout(function() {
 		audioPlayer.pause();
 		audioPlayer.autoplay = false;
-	}, 300);
-	audioPlayer.addEventListener('progress', function() {
+	}, 100);
+	var intervalId = setInterval(function() {
 		if (audioPlayer.buffered.length > 0) {
 			targetProgress = audioPlayer.buffered.end(0) / audioPlayer.duration;
 		} else {
@@ -75,8 +75,9 @@ function loadBgm(callback) {
 
 		if (targetProgress > 0.99) {
 			targetProgress = 1;
+			clearInterval(intervalId);
 		}
-	});
+	}, 100);
 	var funcRAM = window.requestAnimationFrame || window.webkitRequestAnimationFrame;
 	funcRAM(function tick() {
 		if (width / 180 < targetProgress) {
