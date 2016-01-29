@@ -27,7 +27,7 @@ body {
     height: 100px;
     background: #fff url(../avatar.jpg) no-repeat center;
     background-size: cover;
-    margin: 30px auto;
+    margin: 10px auto;
     /*border-radius: 14px;*/
     /*box-shadow: 0 0 22px rgba(0,0,0,.3);*/
     border: 4px solid #eee;
