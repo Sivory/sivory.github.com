@@ -20,7 +20,7 @@ body {
   margin-left:-90px;
   position: absolute;
   left:50%;
-  top:314px;
+  top:254px;
   width:0px;
   height:4px;
   background: #fff;
@@ -31,7 +31,7 @@ body {
   margin-left:-90px;
   position: absolute;
   left:50%;
-  top:314px;
+  top:254px;
   width:180px;
   height:4px;
   background: rgba(255,255,255, 0.2);
@@ -49,12 +49,12 @@ body {
     height: 100px;
     background: #fff;
     background-size: cover;
-    margin: 10px auto;
+    margin: 30px auto;
     /*border-radius: 14px;*/
     /*box-shadow: 0 0 22px rgba(0,0,0,.3);*/
     border: 4px solid #eee;
-    -webkit-animation: showup 2000ms 22s ease-out forwards;
-    animation: showup 2000ms 22s ease-out forwards;
+    -webkit-animation: showup 2000ms 23s ease-out forwards;
+    animation: showup 2000ms 23s ease-out forwards;
     opacity: 0;
     overflow: hidden;
     position: relative;
@@ -90,7 +90,7 @@ body {
     position: absolute;
     left: 50%;
     width: 260px;
-    top: 90px;
+    top: 60px;
     margin-left: -130px;
     text-align: center;
     font-family: 'Lato', sans-serif;
@@ -126,7 +126,7 @@ body {
   background: #ffffff;
   border-radius: 10px;
   position: absolute;
-  top: 228px;
+  top: 168px;
   left: 50%;
   margin-left: -2.5px;
   margin-top: -8.33333333px;
