@@ -122,6 +122,9 @@ function startDisplayWords() {
 					currentWordText.removeClass('bigger');
 				}, 1300);
 			}
+			if (currentIndex == 6) {
+				$('.avatar').css('opacity', 1);
+			}
 			$('body').prepend(currentWordText);
 			setTimeout(function() {
 				currentWordText.removeClass('right');

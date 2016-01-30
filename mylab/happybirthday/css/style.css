@@ -58,12 +58,12 @@ body {
     /*border-radius: 14px;*/
     /*box-shadow: 0 0 22px rgba(0,0,0,.3);*/
     border: 4px solid #eee;
-    -webkit-animation: showup 2000ms 23s ease-out forwards;
-    animation: showup 2000ms 23s ease-out forwards;
+    transition: opacity 2s;
+    -webkit-transition: opacity 2s;
     opacity: 0;
     overflow: hidden;
     position: relative;
-    
+
     -webkit-backface-visibility: hidden;
     -ms-backface-visibility: hidden;
     backface-visibility: hidden;
