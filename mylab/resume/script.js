@@ -152,7 +152,7 @@ UI_Resource.instance = new UI_Resource([{
 
 var UI_Footer = function() {
 	var footer = $('<div>').addClass('footer');
-	footer.html('<span><i class="fa fa-envelope"></i> <a href="mailto:sivory@qq.com">sivory@qq.com</a> <i style="margin:0 15px;">|</i> <i class="fa fa-phone"></i> <a href="tel:15711588512">15711588512</a> <i style="margin:0 15px;">|</i> <a id="full-screen-cheacker">Would you please press the F11 key :-)</a> </span>');
+	footer.html('<span><i class="fa fa-envelope"></i> <a href="mailto:sivory@qq.com">sivory@qq.com</a> <i style="margin:0 15px;">|</i> <i class="fa fa-phone"></i> <a href="tel:18566696964">18566696964</a> <i style="margin:0 15px;">|</i> <a id="full-screen-cheacker">Would you please press the F11 key :-)</a> </span>');
 	return footer;
 }
 
@@ -215,12 +215,13 @@ var UI_Content_Profile = function() {
 	var profileLineName = $('<div>').addClass('profile-line').html('<span class="bold">姓名：</span><span class="fix-up">王威</span>').appendTo(profileContent);
 	var profileLineSex = $('<div>').addClass('profile-line').html('<span class="bold">性别：</span><span class="fix-up">男</span>').appendTo(profileContent);
 	var profileLineHometown = $('<div>').addClass('profile-line').html('<span class="bold">籍贯：</span><span class="fix-up">江苏金湖</span>').appendTo(profileContent);
-	var profileLineWorkcity = $('<div>').addClass('profile-line').html('<span class="bold">所在城市：</span><span class="fix-up">厦门</span>').appendTo(profileContent);
+	var profileLineWorkcity = $('<div>').addClass('profile-line').html('<span class="bold">所在城市：</span><span class="fix-up">深圳</span>').appendTo(profileContent);
 	var profileLineEducation = $('<div>').addClass('profile-line').html('<span class="bold">学历：</span><span class="fix-up">本科</span>').appendTo(profileContent);
 	var profileLineProfession = $('<div>').addClass('profile-line').html('<span class="bold">专业：</span><span class="fix-up">软件工程</span>').appendTo(profileContent);
 	var profileLineSchool = $('<div>').addClass('profile-line').html('<span class="bold">毕业院校：</span><span class="fix-up">厦门大学</span>').appendTo(profileContent);
+	var profileLineCompany = $('<div>').addClass('profile-line').html('<span class="bold">就职于：</span><span class="fix-up">腾讯</span>').appendTo(profileContent);
 	var profileLineBirthday = $('<div>').addClass('profile-line').html('<span class="bold">出生日期：</span><span class="fix-up">1990年12月23日</span>').appendTo(profileContent);
-	var profileLineExpect = $('<div>').addClass('profile-line').html('<span class="bold">期望职业：</span><span class="fix-up">前端工程师 / 游戏架构师</span>').appendTo(profileContent);
+	var profileLineExpect = $('<div>').addClass('profile-line').html('<span class="bold">期望职业：</span><span class="fix-up">WEB/游戏前端工程师</span>').appendTo(profileContent);
 	fContent.doSomething = function() {
 		initFixUp(fContent);
 		setTimeout(function() {
