@@ -30,6 +30,7 @@ body {
 	border-left: 40px solid #600;
 	padding: 10px 10px;
 	transition: .3s border-left;
+	cursor: pointer;
 }
 
 .p-title.openable {

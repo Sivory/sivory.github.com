@@ -19,7 +19,7 @@ $(function() {
 		}
 	}
 	$('.p-title').click(function(e) {
-		currentIndex = $(e.currentTarget).prevAll('.p-title').length;
+		currentIndex = $(e.currentTarget).parent().prevAll('section').length;
 		showChapter(currentIndex);
 	});
 	showChapter(currentIndex);
