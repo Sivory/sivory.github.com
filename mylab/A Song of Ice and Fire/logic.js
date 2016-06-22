@@ -34,13 +34,13 @@
 
 	var loadAndSaveBookData = function() {
 		return new Promise(function(resolve, reject) {
-			var localCacheVersion = localStorage.getItem('cacheVersion');
+			var localCacheVersion = localStorage.getItem('book' + BOOK_INDEX + 'CacheVersion');
 			if (localCacheVersion != null && CACHE_VERSION == Number(localCacheVersion)) {
-				resolve(JSON.parse(localStorage.getItem('bookCache')));
+				resolve(JSON.parse(localStorage.getItem('book' + BOOK_INDEX + 'Cache')));
 			} else {
 				get('./book' + BOOK_INDEX + '.json').then(function(data) {
-					localStorage.setItem('bookCache', data);
-					localStorage.setItem('cacheVersion', CACHE_VERSION);
+					localStorage.setItem('book' + BOOK_INDEX + 'Cache', data);
+					localStorage.setItem('book' + BOOK_INDEX + 'CacheVersion', CACHE_VERSION);
 					resolve(JSON.parse(data));
 				}, function(err) {
 					reject(err);
