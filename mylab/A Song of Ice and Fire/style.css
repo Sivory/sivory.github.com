@@ -81,3 +81,20 @@ body {
 .hide {
 	display: none;
 }
+
+.loading {
+	background: #fdfdfd url(./loading.gif) no-repeat center;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.5s;
+}
+
+.loading.show {
+	opacity: 1;
+}
