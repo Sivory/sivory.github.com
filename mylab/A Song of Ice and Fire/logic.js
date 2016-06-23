@@ -1,6 +1,23 @@
 (function() {
 	var currentIndex = 0;
 	var currentScroll = 0;
+	var targetPercent = 0;
+	var currentPercent = 0;
+
+	var startLoadingAnimation = function() {
+		return new Promise(function(resolve, reject) {
+			(function tick() {
+				if (targetPercent > currentPercent + 2) currentPercent += 2;
+				else if (targetPercent > currentPercent) currentPercent = targetPercent;
+				$('.loading-process').css('width', currentPercent + '%');
+				if (currentPercent < 100) {
+					requestAnimationFrame(tick);
+				} else {
+					resolve();
+				}
+			})();
+		});
+	}
 
 	var get = function(url) {
 		// 返回一个新的 Promise
@@ -27,6 +44,13 @@
 				reject(Error("Network Error"));
 			};
 
+			req.onprogress = function(e) {
+				if (e.lengthComputable) {
+					var percentComplete = e.loaded / e.total;
+					targetPercent = percentComplete * 100;
+				}
+			};
+
 			// 发出请求
 			req.send();
 		});
@@ -36,9 +60,11 @@
 		return new Promise(function(resolve, reject) {
 			var localCacheVersion = localStorage.getItem('book' + BOOK_INDEX + 'CacheVersion');
 			if (localCacheVersion != null && CACHE_VERSION == Number(localCacheVersion)) {
+				targetPercent = 100;
 				resolve(JSON.parse(localStorage.getItem('book' + BOOK_INDEX + 'Cache')));
 			} else {
 				get('./book' + BOOK_INDEX + '.json').then(function(data) {
+					targetPercent = 100;
 					localStorage.setItem('book' + BOOK_INDEX + 'Cache', data);
 					localStorage.setItem('book' + BOOK_INDEX + 'CacheVersion', CACHE_VERSION);
 					resolve(JSON.parse(data));
@@ -115,8 +141,10 @@
 	var init = function() {
 		loadStatus();
 		$('.loading').addClass('show');
-		loadAndSaveBookData().then(function(data) {
-			initHTML(data).then(function() {
+		$('.loading-text').text('读取中');
+		Promise.all([loadAndSaveBookData(), startLoadingAnimation()]).then(function(data) {
+			initHTML(data[0]).then(function() {
+				$('.loading-text').text('读取完毕');
 				setTimeout(function() {
 					$('.loading').removeClass('show');
 				}, 500);
@@ -125,6 +153,7 @@
 				startAutoSaving();
 			});
 		}, function(err) {
+			$('.loading-text').text('读取错误！');
 			$('.loading').removeClass('show');
 			console.error(err);
 		});

@@ -98,3 +98,33 @@ body {
 .loading.show {
 	opacity: 1;
 }
+
+.loading-text {
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 100%;
+	margin-top: 38px;
+	text-align: center;
+	font-size: 26px;
+}
+
+.loading-process-container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 100px;
+	margin-left: -50px;
+	margin-top: 75px;
+	height: 2px;
+	background-color: #ccc;
+}
+
+.loading-process {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 0%;
+	height: 2px;
+	background-color: #666;
+}
