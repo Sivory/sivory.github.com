@@ -341,7 +341,7 @@ var UI_Content_Works = function(name, video, description) {
 		var _ins = this;
 		var videoUrl = $(_ins).find('.video').data('video');
 		setTimeout(function() {
-			var iframe = $('<object height="440" width="640" type="application/x-shockwave-flash" data="http://player.youku.com/player.php/sid/' + videoUrl + '/v.swf"><param name=”src” value=”http://player.youku.com/player.php/sid/' + videoUrl + '/v.swf” /></object>');
+			var iframe = $('<object height="440" width="640" type="application/x-shockwave-flash" data="http://player.youku.com/player.php/sid/' + videoUrl + '/v.swf"><param name="src" value="http://player.youku.com/player.php/sid/' + videoUrl + '/v.swf" /></object>');
 			$(_ins).find('.video').append(iframe);
 		}, 1000);
 	}
