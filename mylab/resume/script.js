@@ -52,7 +52,7 @@ var UI_loading = function() {
 				}, 0);
 				clearInterval(timer);
 				setTimeout(function() {
-					if ( !! success) success();
+					if (!!success) success();
 				}, 500);
 			}
 			setPercent(currentPercent);
@@ -341,7 +341,7 @@ var UI_Content_Works = function(name, video, description) {
 		var _ins = this;
 		var videoUrl = $(_ins).find('.video').data('video');
 		setTimeout(function() {
-			var iframe = $('<object height="440" width="640" type="application/x-shockwave-flash" data="http://player.youku.com/player.php/sid/' + videoUrl + '/v.swf"><param name="src" value="http://player.youku.com/player.php/sid/' + videoUrl + '/v.swf" /></object>');
+			var iframe = $('<embed src="http://player.youku.com/player.php/sid/' + videoUrl + '/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>');
 			$(_ins).find('.video').append(iframe);
 		}, 1000);
 	}
@@ -573,13 +573,13 @@ var showContentPage = function(index) {
 		var delay = 0;
 		if (contentPointer > -1) {
 			contentList[contentPointer].leftOut();
-			if ( !! contentList[contentPointer].endSomething)
+			if (!!contentList[contentPointer].endSomething)
 				contentList[contentPointer].endSomething();
 			delay = 500;
 		}
 		setTimeout(function() {
 			contentList[index].rightIn();
-			if ( !! contentList[index].doSomething)
+			if (!!contentList[index].doSomething)
 				contentList[index].doSomething();
 			contentPointer = index;
 			animationBlocker = false;
@@ -588,11 +588,11 @@ var showContentPage = function(index) {
 		animationBlocker = true;
 		var delay = 500;
 		contentList[contentPointer].rightOut();
-		if ( !! contentList[contentPointer].endSomething)
+		if (!!contentList[contentPointer].endSomething)
 			contentList[contentPointer].endSomething();
 		setTimeout(function() {
 			contentList[index].leftIn();
-			if ( !! contentList[index].doSomething)
+			if (!!contentList[index].doSomething)
 				contentList[index].doSomething();
 			contentPointer = index;
 			animationBlocker = false;
