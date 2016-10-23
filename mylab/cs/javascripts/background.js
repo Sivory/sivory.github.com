@@ -1,16 +1,16 @@
 (function() {
-	var url = '/images/b1.png';
+	var url = './images/b1.png';
 
 	var actorList = [
-		'/images/Zombie_Dolls_001.png',
-		'/images/Zombie_Dolls_002.png',
-		'/images/Zombie_Dolls_003.png',
-		'/images/Zombie_Dolls_004.png',
-		'/images/Zombie_Dolls_005.png',
-		'/images/Zombie_Dolls_006.png',
-		'/images/Zombie_Dolls_007.png',
-		'/images/Zombie_Dolls_008.png',
-		'/images/Zombie_Dolls_009.png'
+		'./images/Zombie_Dolls_001.png',
+		'./images/Zombie_Dolls_002.png',
+		'./images/Zombie_Dolls_003.png',
+		'./images/Zombie_Dolls_004.png',
+		'./images/Zombie_Dolls_005.png',
+		'./images/Zombie_Dolls_006.png',
+		'./images/Zombie_Dolls_007.png',
+		'./images/Zombie_Dolls_008.png',
+		'./images/Zombie_Dolls_009.png'
 	];
 
 
