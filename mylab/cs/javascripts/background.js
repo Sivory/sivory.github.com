@@ -51,7 +51,6 @@
 		if (Math.random() < 0.02 && this.actors.length < 5) {
 			var image = new Image();
 			var index = Math.floor(Math.random() * 9);
-			console.log(index, actorList[index]);
 			image.src = actorList[index];
 			this.actors.push({
 				image: image,
