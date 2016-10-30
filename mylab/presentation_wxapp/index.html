@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>如何写一个微信小程序</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css"></head>
+<body>
+	<div id="impress">
+		<div id="logo" class="step" data-x="0" data-y="-3200" data-z="5000" data-scale="4">
+			<img style="position:absolute;box-shadow: none;left: 50%;top: 50%;transform: translate(-50%, -50%);" width="160" height="160" src="logo.png">
+		</div>
+		<div class="step" data-x="0" data-y="-1000" data-scale="4">
+			<div class="main-title">如何写一个微信小程序？</div>
+			<div class="author">
+				<span class="date">2016.10.30</span>
+				<span class="slash">/</span>
+				<span class="name">Sivory Wang</span>
+			</div>
+		</div>
+		<div class="step" data-y="1000">
+			<div class="pre-all">假设我们已经注册了应用号，并完成了关联开发者帐号等等的前期准备工作。</div>
+		</div>
+		<div class="step" data-y="2000">
+			<div class="page-title">下载安装开发工具</div>
+			<img style="position:absolute;left: 154px; top: 80px;" src="20161030161717.png">
+			<img style="position:absolute;left: 0px; top: 180px;" src="20161030161745.png"></div>
+		<div class="step" data-y="3000">
+			<div class="page-title">主界面</div>
+			<img style="position:absolute;left: -200px;top: 160px;" src="20161030161827.png">
+			<img style="position: absolute;left: 400px;top: 120px;transform:scale(0.7, 0.7);transform-origin: 0% 0%;" src="20161030215756.png"></div>
+		<div class="step" data-y="3600" data-scale="0.5" data-x="-300">
+			<div class="page-title">代码界面</div>
+			<img style="position:absolute;left: 0px;top: 60px;" src="20161030215756.png">
+		</div>
+		<div class="step" data-y="3600" data-scale="0.5" data-x="400">
+			<div class="page-title">调试界面</div>
+			<img style="position:absolute;left: 0px;top: 60px;" src="20161031005852.png">
+		</div>
+		<div class="step" data-y="3600" data-scale="0.5" data-x="1100">
+			<div class="page-title">设置界面</div>
+			<img style="position:absolute;left: 0px;top: 60px;" src="20161031010447.png">
+		</div>
+		<div class="step" data-y="5000">
+			<div class="page-title">一个完整的微信小程序项目结构</div>
+			<img style="position:absolute;left: 100px;top: 160px;" src="20161030170312.png">
+			<ul style="position: absolute;left: 500px;top: 180px;">
+				<div style="position: relative;left: -40px;top: -20px;">必需文件：</div>
+				<li>app.json <i>主配置</i></li>
+				<li>app.js <i>主逻辑</i></li>
+				<li>app.wxss <i>全局样式表</i></li>
+			</ul>
+		</div>
+		<div class="step" data-y="4800" data-x="360" data-scale="0.2">
+			<div class="page-title">app.json 主配置文件</div>
+			<img style="position:absolute;left: 0px;top: 60px;" src="20161031013342.png">
+			<img style="position:absolute;left: 300px;top: 200px;" src="20161031014019.png">
+		</div>
+		<div class="step" data-y="5000" data-x="460" data-scale="0.2">
+			<div class="page-title">app.js 主逻辑文件</div>
+			<img style="position:absolute;left: 0px;top: 60px;" src="20161031014655.png">
+			<ul style="position: absolute;left: 700px;top: 180px;">
+				<div style="position: relative;left: -40px;top: -20px;">主要作用：</div>
+				<li>监听全局事件</li>
+				<li>提供全局函数</li>
+				<li>寄存全局变量</li>
+			</ul>
+		</div>
+		<div class="step" data-y="5200" data-x="360" data-scale="0.2">
+			<div class="page-title">app.wxss 全局样式表</div>
+			<img style="position:absolute;left: 200px;top: 160px;" src="20161031015606.png">
+		</div>
+		<div class="step" data-y="6000">
+			<div class="page-title">一个完整的页面结构</div>
+			<img style="position:absolute;left: 0px;top: 150px;" src="20161030170122.png">
+			<div style="position: absolute;width: 600px;font-size: 24px;left: 300px;top: 140px;">页面是一个相对独立的逻辑单元，类似网站中的单个网页。一个页面Page对应四个文件分别为：<br/>Page.js Page.wxml Page.wxss Page.json</div>
+			<ul style="position: absolute;left: 300px;top: 240px;">
+				<div style="position: relative;left: -40px;top: -20px;">必须文件：</div>
+				<li>Page.js <i>页面逻辑</i></li>
+				<li>Page.wxml <i>页面视图</i></li>
+				<div style="position: relative;left: -40px;top: -20px;margin-top: 60px;">非必须文件：</div>
+				<li>Page.wxss <i>页面样式表</i></li>
+				<li>Page.json <i>页面窗口配置</i></li>
+			</ul>
+		</div>
+		<div class="step" data-x="-200" data-y="6500" data-scale="0.5">
+			<div class="page-title">页面视图层</div>
+			<img style="position:absolute;left: 0px;top: 60px;" src="20161031021807.png">
+			<img style="position:absolute;right: 0px;top: 60px;" src="20161031022128.png">
+			<div style="position: absolute;width: 500px;font-size: 24px;left: 20px;top: 400px;">WXML文件定义页面结构，WXSS文件则定义页面表现，类似HTML与CSS。相比HTML，WXML更加强大，能够绑定数据与事件。</div>
+		</div>
+		<div class="step" data-x="400" data-y="6500" data-scale="0.5">
+			<div class="page-title">页面逻辑层</div>
+			<img style="position:absolute;left: 0px;top: 60px;" src="20161031023013.png">
+			<ul style="position: absolute;left: 500px;top: 180px;">
+				<div style="position: relative;left: -40px;top: -20px;">主要功能：</div>
+				<li>处理页面事件</li>
+				<li>存储页面数据</li>
+				<li>向视图层传递数据</li>
+			</ul>
+		</div>
+		<div class="step" data-x="100" data-y="6900">
+			<img style="position:absolute;left: 50%;top: 50%;box-shadow: none;transform: translate(-50%, -40%);" src="relation.png">
+		</div>
+		<div class="step" data-y="7600">
+			<ol style="position: absolute;left: 360px;top: 140px;">
+				<div style="position: relative;left: -180px;top: -20px;">小程序的开发有以下技术要点可供参考：</div>
+				<li>数据绑定</li>
+				<li>事件绑定</li>
+				<li>生命周期</li>
+				<li>页面栈</li>
+				<li>JS作用域</li>
+				<li>JS模块化</li>
+				<li>页面组件</li>
+				<li>Canvas画布</li>
+				<li>WXAPI</li>
+			</ol>
+		</div>
+		<div class="step" data-x="2000" data-y="7600">
+			<div class="page-title">数据绑定</div>
+			<img style="position:absolute;right: 10px;top: 60px;" src="20161031030835.png">
+			<img style="position:absolute;left: 10px;top: 60px;" src="20161031030921.png">
+			<div style="position: absolute;width: 500px;font-size: 24px;left: 20px;top: 400px;">在逻辑层注册页面实例时，可以通过data字段赋予页面实例初始数据，视图层可以使用“{{...}}”操作符来渲染相应的数据。而后逻辑层可通过setData方法修改这些数据，这种修改将实时反映在视图层上。</div>
+		</div>
+		<div class="step" data-x="4000" data-y="7600">
+			<div class="page-title">事件绑定</div>
+			<img style="position:absolute;right: 10px;top: 60px;" src="20161031040024.png">
+			<img style="position:absolute;left: 10px;top: 60px;" src="20161031035958.png">
+			<div style="position: absolute;width: 500px;font-size: 24px;left: 20px;top: 400px;">视图层可以通过以上这种方法来绑定某一个事件到逻辑层的某一个方法，当事件发生时将调用逻辑层的相关方法。目前可以绑定的事件有：touchstart, touchend, touchmove, touchcancel, tap, longtap</div>
+		</div>
+		<div class="step" data-x="6000" data-y="7600">
+			<div class="page-title">页面生命周期</div>
+			<img style="position:absolute;right: 60px;top: -50px;" src="mina-lifecycle.png" height="700" width="auto">
+			<div style="position: absolute;width: 380px;font-size: 24px;left: 20px;top: 100px;">右图是页面实例的生命周期示意图，其形象说明了一个页面生命周期中的各个阶段，其所能发生的各种事件，以及它们的顺序。</div>
+		</div>
+		<div class="step" data-x="8000" data-y="7600">
+			<div class="page-title">页面栈</div>
+			<img style="position:absolute;right: 150px;top: 150px;" src="20161031042416.png">
+			<div style="position: absolute;width: 380px;font-size: 24px;left: 20px;top: 200px;">小程序框架将维护一个页面栈，当调用navigateTo方法跳转页面时，将生成一个新的页面实例压栈。点击左上角返回则释放当前页面实例并出栈。栈顶是当前显示的页面，而栈底则是程序首页。如果使用redirectTo方法跳转页面，则会释放栈顶页面而不会改变栈的深度。</div>
+		</div>
+		<div class="step" data-x="10000" data-y="7600">
+			<div class="page-title">JS作用域</div>
+			<img style="position:absolute;right: 100px;top: 50px;" src="20161031043226.png">
+			<div style="position: absolute;width: 380px;font-size: 24px;left: 20px;top: 200px;"><p>在 JavaScript 文件中声明的变量和函数只在该文件中有效；不同的文件中可以声明相同名字的变量和函数，不会互相影响。</p><p>可以使用getApp()方法来取得APP实例，此实例全局唯一，可以借此定义并访问全局变量或方法。</p></div>
+		</div>
+		<div class="step" data-x="12000" data-y="7600">
+			<div class="page-title">JS模块化</div>
+			<img style="position:absolute;right: 100px;top: 50px;" src="20161031044032.png">
+			<div style="position: absolute;width: 320px;font-size: 24px;left: 20px;top: 180px;">我们可以将一些公共的代码抽离成为一个单独的 js 文件，作为一个模块。这里的模块将采用nodejs提供的方法来管理。js文件可以通过module.exports来向外暴露接口。其他js文件可以通过require方法取得js模块提供的方法。</div>
+		</div>
+		<div class="step" data-x="14000" data-y="7600">
+			<div class="page-title">页面组件</div>
+			<img style="position:absolute;right: 600px;top: 50px;" src="20161031045109.png">
+			<img style="position:absolute;right: 400px;top: 50px;" src="20161031045134.png">
+			<img style="position:absolute;right: 200px;top: 50px;" src="20161031045150.png">
+			<img style="position:absolute;right: 0px;top: 50px;" src="20161031045336.png">
+		</div>
+		<div class="step" data-x="16000" data-y="7600">
+			<div class="page-title">Canvas绘图</div>
+			<img style="position:absolute;right: 50px;top: 0;" src="20161031054234.png">
+			<div style="position: absolute;width: 320px;font-size: 24px;left: 20px;top: 180px;"><p>canvas提供像素级别的绘图接口，利用它我们可以实现诸如动画、游戏等强交互体验。</p><p>小程序框架对canvas的包装与html5的canvas原生接口很接近，这使得移植与学习都更加方便。</p></div>
+		</div>
+		<div class="step" data-x="10000" data-y="8600">
+			<div class="page-title">WXAPI</div>
+			<img style="position:absolute;left: 0px;top: 50px;" src="20161031045903.png">
+			<img style="position:absolute;right: 0px;top: 50px;" src="20161031050113.png">
+		</div>
+		<div class="step" data-x="12000" data-y="8600">
+			<div class="page-title">前后台交互</div>
+			<img style="position:absolute;left: 60px;top: 150px;" src="20161031050544.png">
+			<img style="position:absolute;right: 60px;top: 80px;" src="20161031050700.png">
+		</div>
+		<div class="step" data-x="14000" data-y="8600">
+			<div class="page-title">用户登录</div>
+			<img style="position:absolute;right: 0px;top: -50px;" height="700" width="auto" src="login.png">
+			<div style="position: absolute;width: 160px;font-size: 24px;left: 20px;top: 140px;">单纯前端登录为弱登录，可以取得用户名称、头像等基本信息，但无法取得可用于区分用户的openid信息，也无法调用微信开放平台的其他功能。可以借助后台协助完成强登录从而取得这些信息。</div>
+		</div>
+		<div class="step" data-x="16000" data-y="8600">
+			<div class="page-title">微信支付</div>
+			<img style="position:absolute;right: 0px;top: -50px;" src="20161031052336.png">
+		</div>
+		<div class="step" data-x="18000" data-y="8600" style="width:1024px;height:768px;">
+			<img style="position:absolute;left: 0px;top: 0px;" src="20161031052415.png">
+		</div>
+		<div id="overview" class="step" data-x="6000" data-y="3000" data-z="6000" data-scale="10">
+			<div style="text-align: center;font-size: 82px;margin-top:200px;">谢谢关注</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="impress.js"></script>
+	<script type="text/javascript">impress().init();</script>
+</body>
+</html>

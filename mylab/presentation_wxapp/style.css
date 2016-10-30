@@ -1,0 +1,81 @@
+@font-face {
+	font-family: Graziano;
+	src: url('Graziano.ttf')
+}
+
+body {
+	background: url(paper_fibers.png);
+	font-size: 28px;
+	color: #666;
+}
+
+.step {
+	width: 960px;
+	height: 600px;
+	opacity: 0.2;
+	transition: .3s opacity;
+	border-radius: 10px
+}
+
+.impress-on-overview .step {
+	opacity: 0.5;
+}
+
+.impress-on-logo .step {
+	opacity: 0;
+}
+
+.step.active {
+	opacity: 1;
+}
+
+.main-title {
+	width: 960px;
+	text-align: center;
+	font-size: 64px;
+	margin-top: 200px;
+	color: #333;
+}
+
+.author {
+	width: 700px;
+	text-align: right;
+	margin: 0 auto;
+	margin-top: 20px;
+	font-size: 28px;
+	font-family: Graziano;
+}
+
+.author .date {
+	position: relative;
+	top: -32px;
+	left: 10px;
+}
+
+.author .slash {
+	font-size: 70px;
+}
+
+.author .name {
+	position: relative;
+	top: 2px;
+	left: -10px;
+}
+
+.pre-all {
+	margin-top: 200px;
+}
+
+.page-title {
+	font-size: 36px;
+	text-transform: uppercase;
+	color: #333;
+}
+
+img {
+	box-shadow: 0 0 60px rgba(0,0,0,.3);
+}
+
+i{
+	color: #999;
+}
