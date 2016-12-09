@@ -35,7 +35,7 @@ FireButton.prototype.ontouchend = function(e) {
 
 FireButton.prototype.draw = function(ctx) {
 	var color = this.hover ? hoverColor : normalColor;
-	Util.drawCircle(ctx, ctx.canvas.width - right - r, ctx.canvas.height - bottom - r, r, 0, color);
+	Util.drawCircle(ctx, ctx._canvas.width - right - r, ctx._canvas.height - bottom - r, r, 0, color);
 };
 
 FireButton.prototype.getCurTouch = function(e) {

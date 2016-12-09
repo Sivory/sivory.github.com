@@ -49,8 +49,8 @@ var Controller = function(game) {
 
 	this.contents.push(new Joystick(game));
 	this.contents.push(new Sight(game));
-	this.contents.push(new FireButton(game));
 	this.contents.push(new Gun(game));
+	this.contents.push(new FireButton(game));
 
 	this.initEvent = initEvent;
 	this.draw = draw;
