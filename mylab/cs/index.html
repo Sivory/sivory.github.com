@@ -5,18 +5,19 @@
 	<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"/>
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<script type="text/javascript" src="./javascripts/es6-promise.auto.min.js"></script>
+	<script type="text/javascript" src="./javascripts/jquery.js"></script>
+	<script type="text/javascript" src="./javascripts/CoolResource.js"></script>
+	<script type="text/javascript" src="./javascripts/CoolModule.js"></script>
+	<script type="text/javascript">
+		var coolResource = new CoolResource();
+		var coolModule = null;
+		coolResource.loadResources('./game/version.json').then(function(){
+			coolModule = new CoolModule(coolResource);
+			coolModule.require('main')();
+		});
+	</script>
 </head>
 <body>
-	<canvas id="game-container"></canvas>
-	<div id="debuger"></div>
-	<script type="text/javascript" src="./javascripts/jquery.js"></script>
-	<script type="text/javascript" src="./javascripts/logic.js"></script>
-	<script type="text/javascript" src="./javascripts/util.js"></script>
-	<script type="text/javascript" src="./javascripts/callbackCenter.js"></script>
-	<script type="text/javascript" src="./javascripts/joystick.js"></script>
-	<script type="text/javascript" src="./javascripts/fireButton.js"></script>
-	<script type="text/javascript" src="./javascripts/sight.js"></script>
-	<script type="text/javascript" src="./javascripts/background.js"></script>
-	<script type="text/javascript" src="./javascripts/game.js"></script>
 </body>
 </html>

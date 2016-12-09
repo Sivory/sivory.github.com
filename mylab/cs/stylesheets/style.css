@@ -4,19 +4,9 @@ body {
 	overflow: hidden;
 }
 
-#game-container {
+canvas {
 	position: fixed;
 	left: 0;
 	top: 0;
 	background-color: #000;
-}
-
-#debuger {
-	position: fixed;
-	left: 10px;
-	top: 10px;
-	pointer-events: none;
-	font-size: 12px;
-	font-family: Monospace;
-	color: #fff;
 }
