@@ -11,6 +11,21 @@ var draw = function(ctx) {
 	this.gunAnimation.draw(ctx, this.game.gameTimeline.getCurrentTime());
 };
 
+var onFire = function() {
+	var that = this;
+	// if (this.gunAnimation.playing) return;
+	this.gunAnimation.playOnce().then(function() {
+		that.fireAnimation.currentFrame = Math.floor(Math.random() * that.fireAnimation.frames.length);
+		that.gunAnimation.currentFrame = 0;
+	});
+	this.game.dispatch('shock', {
+		duration: 400,
+		offset: 20,
+		recoil: 0
+	});
+	this.game.dispatch('hit');
+};
+
 var Gun = function(game) {
 	this.game = game;
 	this.gunAnimation = new Animation(game.gameTimeline, assets('gunAnimation'), 720, 960, 500);
@@ -21,14 +36,10 @@ var Gun = function(game) {
 	this.fireAnimation.height = this.gunAnimation.frameHeight / this.gunAnimation.frameWidth * this.gunAnimation.width;
 
 	this.draw = draw;
+	this.onFire = onFire;
 
 	var that = this;
-	game.on('fire', function() {
-		that.gunAnimation.playOnce().then(function() {
-			that.fireAnimation.currentFrame = Math.floor(Math.random() * that.fireAnimation.frames.length);
-			that.gunAnimation.currentFrame = 0;
-		});
-	});
+	game.on('fire', this.onFire, this);
 };
 
 exports = Gun;

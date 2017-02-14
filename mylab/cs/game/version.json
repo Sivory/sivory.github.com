@@ -3,7 +3,12 @@
 		"index": "b1",
 		"path": "./game/assets/images/b1.jpg",
 		"version": "0003",
-		"mime": "image/png"
+		"mime": "image/jpeg"
+	}, {
+		"index": "mainBackground",
+		"path": "./game/assets/images/mainBackground.jpg",
+		"version": "0004",
+		"mime": "image/jpeg"
 	}, {
 		"index": "zombieWalk001",
 		"path": "./game/assets/images/zombieWalk001.png",
@@ -60,8 +65,8 @@
 		"version": "~",
 		"mime": "application/x-javascript"
 	}, {
-		"index": "callbackCenter",
-		"path": "./game/scripts/Component/callbackCenter.js",
+		"index": "eventDispatcher",
+		"path": "./game/scripts/Component/eventDispatcher.js",
 		"version": "~",
 		"mime": "application/x-javascript"
 	}, {
@@ -105,6 +110,11 @@
 		"version": "~",
 		"mime": "application/x-javascript"
 	}, {
+		"index": "touchableContainer",
+		"path": "./game/scripts/Component/touchableContainer.js",
+		"version": "~",
+		"mime": "application/x-javascript"
+	}, {
 		"index": "canvas",
 		"path": "./game/scripts/Component/canvas.js",
 		"version": "~",
@@ -112,6 +122,26 @@
 	}, {
 		"index": "controller",
 		"path": "./game/scripts/Controller/controller.js",
+		"version": "~",
+		"mime": "application/x-javascript"
+	}, {
+		"index": "widget",
+		"path": "./game/scripts/UI/widget.js",
+		"version": "~",
+		"mime": "application/x-javascript"
+	}, {
+		"index": "button",
+		"path": "./game/scripts/UI/button.js",
+		"version": "~",
+		"mime": "application/x-javascript"
+	}, {
+		"index": "picture",
+		"path": "./game/scripts/UI/picture.js",
+		"version": "~",
+		"mime": "application/x-javascript"
+	}, {
+		"index": "mainUI",
+		"path": "./game/scripts/UI/mainUI.js",
 		"version": "~",
 		"mime": "application/x-javascript"
 	}, {

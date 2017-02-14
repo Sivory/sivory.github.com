@@ -45,7 +45,7 @@ Joystick.prototype.ontouchmove = function(e) {
 			this.joystickOffsetX = this.joystickOffsetX / distanceToCenter * maxDistance;
 			this.joystickOffsetY = this.joystickOffsetY / distanceToCenter * maxDistance;
 		}
-		this.game.trigger('moveCamera', {
+		this.game.dispatch('moveCamera', {
 			x: this.joystickOffsetX,
 			y: this.joystickOffsetY
 		});
@@ -59,7 +59,7 @@ Joystick.prototype.ontouchend = function(e) {
 		this.joystickHover = false;
 		this.joystickOffsetX = 0;
 		this.joystickOffsetY = 0;
-		this.game.trigger('moveCamera', {
+		this.game.dispatch('moveCamera', {
 			x: 0,
 			y: 0
 		});

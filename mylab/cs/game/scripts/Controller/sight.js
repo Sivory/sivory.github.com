@@ -1,9 +1,17 @@
 var Animation = imports('animation');
 
 var draw = function(ctx) {
-	this.animation.x = ctx._canvas.width/2-this.animation.width/2;
-	this.animation.y = ctx._canvas.height/2-this.animation.height/2;
+	this.animation.x = ctx._canvas.width / 2 - this.animation.width / 2;
+	this.animation.y = ctx._canvas.height / 2 - this.animation.height / 2;
 	this.animation.draw(ctx);
+};
+
+var onAim = function() {
+	this.animation.currentFrame = 0;
+};
+
+var onNotAim = function() {
+	this.animation.currentFrame = 1;
 };
 
 var Sight = function(game) {
@@ -13,6 +21,9 @@ var Sight = function(game) {
 	this.animation.height = 48;
 
 	this.draw = draw;
+
+	game.on('aim', onAim, this);
+	game.on('notaim', onNotAim, this);
 };
 
 exports = Sight;

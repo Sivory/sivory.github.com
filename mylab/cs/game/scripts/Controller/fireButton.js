@@ -18,7 +18,7 @@ FireButton.prototype.ontouchstart = function(e) {
 		if (touch != null) {
 			this.curTouchId = touch.identifier;
 			this.hover = true;
-			this.game.trigger('fire');
+			this.game.dispatch('fire');
 			return true;
 		}
 	}

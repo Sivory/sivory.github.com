@@ -49,11 +49,18 @@
 						client.send();
 					}
 				});
+			default:
+				console.error('未知MIME:', resItem);
+				break;
 		}
 	};
 
 	var getResource = function(index) {
-		return this.resourceMap[index].content;
+		if (this.resourceMap[index] != null) {
+			return this.resourceMap[index].content;
+		} else {
+			console.error('找不到资源：' + index);
+		}
 	};
 
 	// 返回一个promise
