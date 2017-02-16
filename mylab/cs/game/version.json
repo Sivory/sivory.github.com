@@ -30,6 +30,86 @@
 		"version": "0003",
 		"mime": "image/png"
 	}, {
+		"index": "zombieWalk002",
+		"path": "./game/assets/images/zombieWalk002.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieAttack002",
+		"path": "./game/assets/images/zombieAttack002.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieBirth002",
+		"path": "./game/assets/images/zombieBirth002.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieDead002",
+		"path": "./game/assets/images/zombieDead002.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieWalk003",
+		"path": "./game/assets/images/zombieWalk003.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieAttack003",
+		"path": "./game/assets/images/zombieAttack003.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieBirth003",
+		"path": "./game/assets/images/zombieBirth003.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieDead003",
+		"path": "./game/assets/images/zombieDead003.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieWalk004",
+		"path": "./game/assets/images/zombieWalk004.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieAttack004",
+		"path": "./game/assets/images/zombieAttack004.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieBirth004",
+		"path": "./game/assets/images/zombieBirth004.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieDead004",
+		"path": "./game/assets/images/zombieDead004.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieWalk005",
+		"path": "./game/assets/images/zombieWalk005.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieAttack005",
+		"path": "./game/assets/images/zombieAttack005.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieBirth005",
+		"path": "./game/assets/images/zombieBirth005.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "zombieDead005",
+		"path": "./game/assets/images/zombieDead005.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
 		"index": "joystickBottom",
 		"path": "./game/assets/images/joystickBottom.png",
 		"version": "0003",
@@ -45,8 +125,18 @@
 		"version": "0003",
 		"mime": "image/png"
 	}, {
-		"index": "gunAnimation",
-		"path": "./game/assets/images/gunAnimation.png",
+		"index": "gunAnimation001",
+		"path": "./game/assets/images/gunAnimation001.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "gunAnimation002",
+		"path": "./game/assets/images/gunAnimation002.png",
+		"version": "0003",
+		"mime": "image/png"
+	}, {
+		"index": "gunAnimation003",
+		"path": "./game/assets/images/gunAnimation003.png",
 		"version": "0003",
 		"mime": "image/png"
 	}, {
@@ -102,6 +192,11 @@
 	}, {
 		"index": "bitmap",
 		"path": "./game/scripts/Component/bitmap.js",
+		"version": "~",
+		"mime": "application/x-javascript"
+	}, {
+		"index": "gameData",
+		"path": "./game/scripts/Component/gameData.js",
 		"version": "~",
 		"mime": "application/x-javascript"
 	}, {

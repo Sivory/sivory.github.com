@@ -15,15 +15,15 @@ var refresh = function(ctx) {
 	for (var i = 0; i < this.children.length; i++) {
 		this.children[i].draw(ctx, curTime);
 	}
-	for (var i = 0; i < this.zombies.length; i++) {
-		this.zombies[i].draw(ctx, curTime);
+	for (var j = 0; j < this.zombies.length; j++) {
+		this.zombies[j].draw(ctx, curTime);
 	}
 	ctx.restore();
 };
 
 var update = function() {
-	this.checkCreateZombie();
-	this.checkDeleteZombie();
+	this.shouldCreateZombie();
+	this.shouldDeleteZombie();
 	this.moveZombies();
 	this.checkAimZombie();
 };
@@ -40,7 +40,6 @@ var checkAimZombie = function() {
 	}
 	if (this.aimZombie == null && aim === true) {
 		this.game.dispatch('aim');
-		console.log('aim');
 	}
 	if (this.aimZombie != null && aim === false) {
 		this.game.dispatch('notaim');
@@ -48,19 +47,23 @@ var checkAimZombie = function() {
 	this.aimZombie = z;
 };
 
-var checkCreateZombie = function() {
-	if ((Math.random() < 0.002 || this.zombies.length === 0) && this.zombies.length < 5) {
-		var zombie = new Zombie(this.game);
+var shouldCreateZombie = function() {
+	if ((Math.random() < 0.005 || this.zombies.length === 0) && this.zombies.length < 5) {
+		var zombie = new Zombie(this.game, this.game.data.zombieConfig[Math.floor(Math.random() * this.game.data.zombieConfig.length)]);
+		// var zombie = new Zombie(this.game, this.game.data.zombieConfig[2]);
 		zombie.birthX = Math.random() * 640 - 320;
 		zombie.birthY = Math.random() * 40 - 200;
+		zombie.birthTime = this.game.gameTimeline.getCurrentTime();
+		zombie.targetX = zombie.birthX / 1.5;
+		zombie.targetY = 400 + Math.random() * 30 - 15;
 		zombie.x = zombie.birthX;
 		zombie.y = zombie.birthY;
-		zombie.z = (zombie.y + 200) / 600 * 1 + 0.5;
+		zombie.z = (zombie.y + 200) / 600 * 0.5 + 0.5;
 		this.zombies.push(zombie);
 	}
 };
 
-var checkDeleteZombie = function() {
+var shouldDeleteZombie = function() {
 	for (var i = 0; i < this.zombies.length; i++) {
 		if (this.zombies[i].alive === false) {
 			this.zombies.splice(i, 1);
@@ -75,17 +78,19 @@ var moveZombies = function() {
 	for (var i = 0; i < this.zombies.length; i++) {
 		if (this.zombies[i].isWalking()) {
 			if (curTime - this.zombies[i].birthTime < duration) {
-				this.zombies[i].x = this.zombies[i].birthX + (this.zombies[i].birthX / 2 - this.zombies[i].birthX) * (curTime - this.zombies[i].birthTime) / duration;
-				this.zombies[i].y = this.zombies[i].birthY + (400 - this.zombies[i].birthY) * (curTime - this.zombies[i].birthTime) / duration;
-				this.zombies[i].z = (this.zombies[i].y + 200) / 600 * 1 + 0.5;
+				this.zombies[i].x = this.zombies[i].birthX + (this.zombies[i].targetX - this.zombies[i].birthX) * (curTime - this.zombies[i].birthTime) / duration;
+				this.zombies[i].y = this.zombies[i].birthY + (this.zombies[i].targetY - this.zombies[i].birthY) * (curTime - this.zombies[i].birthTime) / duration;
+				this.zombies[i].z = (this.zombies[i].y + 200) / 600 * 0.5 + 0.5;
 			} else {
-				this.zombies[i].x = this.zombies[i].birthX / 2;
-				this.zombies[i].y = 400;
-				this.zombies[i].z = 1.5;
+				this.zombies[i].x = this.zombies[i].targetX;
+				this.zombies[i].y = this.zombies[i].targetY;
+				this.zombies[i].z = (this.zombies[i].y + 200) / 600 * 0.5 + 0.5;
 				this.zombies[i].beginAttack();
 			}
 		} else if (this.zombies[i].isRising()) {
 			this.zombies[i].birthTime = curTime;
+		} else if (this.zombies[i].isAttacking()) {
+			this.zombies[i].updateAttackAction();
 		}
 	}
 	this.zombies.sort(function(a, b) {
@@ -93,9 +98,15 @@ var moveZombies = function() {
 	});
 };
 
-var onHit = function() {
+var onHit = function(damage) {
 	if (this.aimZombie != null) {
-		this.aimZombie.hurt();
+		this.aimZombie.hurt(damage);
+	}
+};
+
+var initZombies = function() {
+	for (var i=0;i<this.game.data.zombieConfig.length;i++) {
+		new Zombie(this.game, this.game.data.zombieConfig[i]);
 	}
 };
 
@@ -111,8 +122,9 @@ var World = function(game) {
 	this.onHit = onHit;
 	this.checkAimZombie = checkAimZombie;
 	this.moveZombies = moveZombies;
-	this.checkDeleteZombie = checkDeleteZombie;
-	this.checkCreateZombie = checkCreateZombie;
+	this.shouldDeleteZombie = shouldDeleteZombie;
+	this.shouldCreateZombie = shouldCreateZombie;
+	this.initZombies = initZombies;
 
 	this.background = new Bitmap(assets('b1'));
 	this.background.x = -this.background.width / 2;
@@ -122,6 +134,7 @@ var World = function(game) {
 	this.zombies = [];
 
 	game.on('hit', this.onHit, this);
+	this.initZombies();
 };
 
 exports = World;

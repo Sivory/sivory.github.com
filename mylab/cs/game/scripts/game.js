@@ -5,6 +5,7 @@ var Timeline = imports('timeline');
 var TouchableContainer = imports('touchableContainer');
 var Canvas = imports('canvas');
 var MainUI = imports('mainUI');
+var GameData = imports('gameData');
 
 var startLoop = function(onTick, onDraw, thisObject) {
 	var that = this;
@@ -47,6 +48,7 @@ var Game = function() {
 	this.intervalID = null;
 	this.updateDelay = 20;
 	this.canvas = new Canvas(0);
+	this.data = new GameData();
 
 	this.gameTimeline = new Timeline(); // 需要暂停
 	this.uiTimeline = new Timeline(); // 无需暂停

@@ -18,7 +18,8 @@ FireButton.prototype.ontouchstart = function(e) {
 		if (touch != null) {
 			this.curTouchId = touch.identifier;
 			this.hover = true;
-			this.game.dispatch('fire');
+			this.game.dispatch('fireOnce');
+			this.game.dispatch('openFire');
 			return true;
 		}
 	}
@@ -28,6 +29,7 @@ FireButton.prototype.ontouchstart = function(e) {
 FireButton.prototype.ontouchend = function(e) {
 	if (this.hover && this.getCurTouch(e) == null) {
 		this.hover = false;
+		this.game.dispatch('ceaseFire');
 		return true;
 	}
 	return false;

@@ -2,12 +2,10 @@ var Animation = imports('animation');
 
 var draw = function(ctx) {
 	var curTime = this.game.uiTimeline.getCurrentTime();
-	console.log(curTime, this.shockTime, this.shockDuration);
 	if (curTime - this.shockTime < this.shockDuration) {
 		// 震动
 		var _shockOffset = (this.shockDuration - (curTime - this.shockTime)) / this.shockDuration * 0.2;
 		this.animation.setScale(0.4 + _shockOffset, 0.4 + _shockOffset);
-		console.log('sss');
 	} else {
 		this.animation.setScale(0.4, 0.4);
 	}
@@ -25,8 +23,7 @@ var onNotAim = function() {
 };
 
 var onShock = function(shockParams) {
-	console.log('sight shock');
-	this.shockDuration = shockParams.duration;
+	this.shockDuration = shockParams.duration / 2;
 	this.shockOffset = shockParams.offset;
 	this.shockRecoil = shockParams.recoil;
 	this.shockTime = this.game.uiTimeline.getCurrentTime();

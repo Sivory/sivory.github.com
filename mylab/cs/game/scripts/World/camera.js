@@ -36,6 +36,18 @@ var refresh = function(ctx, curTime) {
 		this.x = this._x;
 		this.y = this._y;
 	}
+	if (this.x < this.rx + this.width / 2) {
+		this.x = this.rx + this.width / 2;
+	}
+	if (this.x > this.rx + this.rw - this.width / 2) {
+		this.x = this.rx + this.rw - this.width / 2;
+	}
+	if (this.y < this.ry + this.height / 2) {
+		this.y = this.ry + this.height / 2;
+	}
+	if (this.y > this.ry + this.rh - this.height / 2) {
+		this.y = this.ry + this.rh - this.height / 2;
+	}
 };
 
 var onMove = function(pos) {
@@ -48,6 +60,11 @@ var onShock = function(shockParams) {
 	this.shockOffset = shockParams.offset;
 	this.shockRecoil = shockParams.recoil;
 	this.shockTime = this.game.uiTimeline.getCurrentTime();
+
+	var shakeAngle = Math.random() * Math.PI / 2 + Math.PI / 4;
+	var shakeDistance = Math.random() * shockParams.shake;
+	this._y -= Math.sin(shakeAngle) * shakeDistance;
+	this._x += Math.cos(shakeAngle) * shakeDistance;
 };
 
 var Camera = function(game) {
